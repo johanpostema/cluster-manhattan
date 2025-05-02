@@ -1,2 +1,3 @@
 resources:
-  - test.yaml
+  - cert-manager-dns-lexicon-webhook.yaml
+  #  - test.yaml

@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    chart: deploy/cert-manager-dns-lexicon-webhook
-    repoURL: https://github.com/gradecam/cert-manager-dns-lexicon-webhook
+    #    chart: deploy/cert-manager-dns-lexicon-webhook
+    repoURL: https://github.com/gradecam/cert-manager-dns-lexicon-webhook.git
     targetRevision: master
     path: deploy/cert-manager-dns-lexicon-webhook
     helm:
@@ -27,3 +27,7 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
+  #  finalizers:
+#  - resources-finalizer.argocd.argoproj.io
+#  releaseName: cert-manager-webhook
