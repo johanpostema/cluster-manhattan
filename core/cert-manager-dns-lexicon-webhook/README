@@ -1,0 +1,5 @@
+letop: er zijn 2 app deployments, de argocd app en de daadwerkelijke helm deployment
+
+verder moet er voor de cert-manager zelf bij de issuer  de webhook opgegeven worden.
+
+Zie de cert-manager-issuer.yaml onder de cert-manager directory voor meer details.

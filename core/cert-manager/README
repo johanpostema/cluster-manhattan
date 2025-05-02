@@ -1,0 +1,9 @@
+Voor de dns-lexicon webhook zijn de volgende secrets nodig:
+
+directadmin-api-creds met key username
+directadmin-api-creds met key password
+
+
+kubectl -n cert-manager create secret generic mysecret \
+  --from-literal=username="${USERNAME}" \
+  --from-literal=password="${PASSWORD}"
