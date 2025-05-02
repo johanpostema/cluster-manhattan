@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-dns-lexicon-webhook
+  name: cert-manager-webhook
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -12,7 +12,7 @@ spec:
     path: deploy/cert-manager-dns-lexicon-webhook
     targetRevision: master
     helm:
-      releaseName: cert-manager-dns-lexicon-webhook
+      releaseName: cert-manager-webhook
       values: |
         image:
           repository: postemaj/cert-manager-dns-lexicon-webhook
