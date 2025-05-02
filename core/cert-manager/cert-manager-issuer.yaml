@@ -1,0 +1,48 @@
+# apiVersion: cert-manager.io/v1
+# kind: ClusterIssuer
+# metadata:
+#   namespace: cert-manager
+#   name: letsencrypt-production
+# spec:
+#   acme:
+#     # You must replace this email address with your own.
+#     # Let's Encrypt will use this to contact you about expiring
+#     # certificates, and issues related to your account.
+#     email: ...
+#     server: https://acme-v02.api.letsencrypt.org/directory
+#     privateKeySecretRef:
+#       # Secret resource that will be used to store the account's private key.
+#       name: letsencrypt-production
+#     # Add a single challenge solver, HTTP01 using nginx
+#     solvers:
+#       - http01:
+#           ingress:
+#             ingressClassName: nginx
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    email:
+    privateKeySecretRef:
+      name: letsencrypt-production
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+      - dns01:
+          cnameStrategy: Follow
+          webhook:
+            config:
+              endpoint: "https://da02.spot.host:2222"
+              apiKeyRef:
+                name: directadmin-api-creds
+                key: username
+              apiSecretRef:
+                name: directadmin-api-creds
+                key: password
+              production: true
+              provider: directadmin
+              usePassword: true
+              ttl: 600
+            groupName: acme.uxn.nl
+            solverName: lexicon
