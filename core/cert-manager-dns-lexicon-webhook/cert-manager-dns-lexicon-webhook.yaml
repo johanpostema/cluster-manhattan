@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-webhook
+  name: cert-manager-dns-lexicon-webhook
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -28,7 +28,3 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
-  #  finalizers:
-#  - resources-finalizer.argocd.argoproj.io
-#  releaseName: cert-manager-webhook
