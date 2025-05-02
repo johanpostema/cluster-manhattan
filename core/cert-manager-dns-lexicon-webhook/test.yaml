@@ -1,24 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cert-manager-dns-lexicon-webhook
+  name: cert-manager-webhook
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/gradecam/cert-manager-dns-lexicon-webhook
-    targetRevision: master
+    repoURL: https://github.com/gradecam/cert-manager-dns-lexicon-webhook.git
     path: deploy/cert-manager-dns-lexicon-webhook
+    targetRevision: master
     helm:
-      #      releaseName: dns-lexicon-webhook
+      releaseName: cert-manager-webhook
       values: |
         image:
-          repository: postemaj/cert-manager-dns-lexicon-webhook
           tag: latest
-          pullPolicy: IfNotPresent
-        groupName: acme.uxn.nl
   destination:
-    server: "https://kubernetes.default.svc"
+    server: https://kubernetes.default.svc
     namespace: cert-manager
   syncPolicy:
     automated:
@@ -26,3 +25,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+
