@@ -6,6 +6,7 @@ metadata:
 spec:
   project: default
   source:
+    chart: deploy/cert-manager-dns-lexicon-webhook
     repoURL: https://github.com/gradecam/cert-manager-dns-lexicon-webhook
     targetRevision: master
     path: deploy/cert-manager-dns-lexicon-webhook
