@@ -1,22 +1,29 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: nginx-helm
+  name: cert-manager-dns-lexicon-webhook
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: nginx
-    targetRevision: 15.5.1
+    repoURL: https://github.com/gradecam/cert-manager-dns-lexicon-webhook
+    chart: cert-manager-dns-lexicon-webhook
+    targetRevision: master
+    path: deploy/cert-manager-dns-lexicon-webhook
     helm:
+      releaseName: dns-lexicon-webhook
       values: |
-        service:
-          type: ClusterIP
+        image:
+          repository: postemaj/cert-manager-dns-lexicon-webhook
+          tag: latest
+          pullPolicy: IfNotPresent
+        groupName: acme.uxn.nl
   destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+    server: "https://kubernetes.default.svc"
+    namespace: cert-manager
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
