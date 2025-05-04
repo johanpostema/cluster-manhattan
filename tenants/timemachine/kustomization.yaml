@@ -51,6 +51,7 @@ patches:
               resources:
                 requests:
                   storage: 500Gi
+
   - target:
       version: v1
       kind: Namespace
@@ -64,6 +65,17 @@ patches:
           pod-security.kubernetes.io/audit: privileged
           pod-security.kubernetes.io/enforce: privileged
           pod-security.kubernetes.io/warn: privileged
+
+  - target:
+      kind: StatefulSet
+      name: timemachine
+    patch: |-
+      apiVersion: v1
+      kind: StatefulSet
+      metadata:
+        name: timemachine
+      spec:
+        serviceName: timemachine
 
   - target:
       kind: Service
