@@ -4,8 +4,8 @@ kind: Kustomization
 namespace: timemachine
 
 resources:
-  - https://raw.githubusercontent.com/mbentley/docker-timemachine/master/timemachine-k3s.yaml
   - timemachine-svc.yaml
+  - https://raw.githubusercontent.com/mbentley/docker-timemachine/master/timemachine-k3s.yaml
 
 patches:
   - target:
@@ -68,26 +68,26 @@ patches:
           pod-security.kubernetes.io/enforce: privileged
           pod-security.kubernetes.io/warn: privileged
 
-  # - target:
-  #     kind: StatefulSet
-  #     name: timemachine
-  #   patch: |-
-  #     apiVersion: v1
-  #     kind: StatefulSet
-  #     metadata:
-  #       name: timemachine
-  #     spec:
-  #       serviceName: timemachine
+  - target:
+      kind: StatefulSet
+      name: timemachine
+    patch: |-
+      apiVersion: v1
+      kind: StatefulSet
+      metadata:
+        name: timemachine
+      spec:
+        serviceName: timemachine
 
-  # - target:
-  #     kind: Service
-  #     name: timemachine-tcp
-  #   patch: |-
-  #     apiVersion: v1
-  #     kind: Service
-  #     metadata:
-  #       name: timemachine-tcp
-  #      $patch: delete
+  - target:
+      kind: Service
+      name: timemachine-tcp
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: timemachine-tcp
+       $patch: delete
   #
   # - target:
   #     kind: Service
