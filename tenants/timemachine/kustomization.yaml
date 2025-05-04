@@ -5,6 +5,7 @@ namespace: timemachine
 
 resources:
   - https://raw.githubusercontent.com/mbentley/docker-timemachine/master/timemachine-k3s.yaml
+  - timemachine-svc.yaml
 
 patches:
   - target:
