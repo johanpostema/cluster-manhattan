@@ -1,0 +1,70 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - openebs-ns.yaml
+  - openebs-sc.yaml
+
+helmCharts:
+  - name: openebs
+    repo: https://openebs.github.io/openebs
+    version: 4.2.0
+    releaseName: openebs
+    namespace: openebs
+    valuesInline:
+      openebs-crds:
+        csi:
+          volumeSnapshots:
+            enabled: true
+            keep: true
+
+      localpv-provisioner:
+        rbac:
+          create: true
+
+      zfs-localpv:
+        crds:
+          zfsLocalPv:
+            enabled: true
+        csi:
+          volumeSnapshots:
+            enabled: true
+        zfsNode:
+          encrKeysDir: /var/openebs/keys
+
+      lvm-localpv:
+        crds:
+          lvmLocalPv:
+            enabled: true
+        csi:
+          volumeSnapshots:
+            enabled: false
+
+      mayastor:
+        csi:
+          node:
+            initContainers:
+              enabled: false
+        etcd:
+          clusterDomain: cluster.local
+        localpv-provisioner:
+          enabled: false
+        crds:
+          enabled: false
+
+      preUpgradeHook:
+        image:
+          registry: docker.io
+          repo: bitnami/kubectl
+          tag: "1.25.15"
+          pullPolicy: IfNotPresent
+
+      engines:
+        local:
+          lvm:
+            enabled: false
+          zfs:
+            enabled: true
+        replicated:
+          mayastor:
+            enabled: false
