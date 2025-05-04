@@ -64,3 +64,15 @@ patches:
           pod-security.kubernetes.io/audit: privileged
           pod-security.kubernetes.io/enforce: privileged
           pod-security.kubernetes.io/warn: privileged
+
+  - target:
+      kind: Service
+      name: timemachine-tcp
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: timemachine-tcp
+        namespace: timemachine
+      spec:
+        loadBalancerIP: 192.168.69.102
