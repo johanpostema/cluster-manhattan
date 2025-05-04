@@ -1,0 +1,4 @@
+resources:
+  - openebs-ns.yaml
+  - openebs.yaml
+  - openebs-sc.yaml
