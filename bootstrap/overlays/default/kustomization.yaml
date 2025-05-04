@@ -6,4 +6,9 @@ resources:
   - ../../base
   - ../../../components/applicationsets
   - ../../../components/argocdproj
-  - argocd-cm.yaml
+
+patches:
+  - path: patch-argocd-cm.yaml
+    target:
+      kind: ConfigMap
+      name: argocd-cm
