@@ -66,36 +66,36 @@ patches:
           pod-security.kubernetes.io/enforce: privileged
           pod-security.kubernetes.io/warn: privileged
 
-  - target:
-      kind: StatefulSet
-      name: timemachine
-    patch: |-
-      apiVersion: v1
-      kind: StatefulSet
-      metadata:
-        name: timemachine
-      spec:
-        serviceName: timemachine
+  # - target:
+  #     kind: StatefulSet
+  #     name: timemachine
+  #   patch: |-
+  #     apiVersion: v1
+  #     kind: StatefulSet
+  #     metadata:
+  #       name: timemachine
+  #     spec:
+  #       serviceName: timemachine
 
-  - target:
-      kind: Service
-      name: timemachine-tcp
-    patch: |-
-      apiVersion: v1
-      kind: Service
-      metadata:
-        name: timemachine-tcp
-       $patch: delete
-
-  - target:
-      kind: Service
-      name: timemachine-udp
-    patch: |-
-      apiVersion: v1
-      kind: Service
-      metadata:
-        name: timemachine-udp
-       $patch: delete
+  # - target:
+  #     kind: Service
+  #     name: timemachine-tcp
+  #   patch: |-
+  #     apiVersion: v1
+  #     kind: Service
+  #     metadata:
+  #       name: timemachine-tcp
+  #      $patch: delete
+  #
+  # - target:
+  #     kind: Service
+  #     name: timemachine-udp
+  #   patch: |-
+  #     apiVersion: v1
+  #     kind: Service
+  #     metadata:
+  #       name: timemachine-udp
+  #      $patch: delete
 
   # - target:
   #     kind: Service
