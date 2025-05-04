@@ -6,3 +6,4 @@ resources:
   - ../../base
   - ../../../components/applicationsets
   - ../../../components/argocdproj
+  - argocd-cm.yaml
