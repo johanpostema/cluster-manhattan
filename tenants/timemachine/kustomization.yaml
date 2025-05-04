@@ -16,6 +16,7 @@ patches:
       metadata:
         name: timemachine
       spec:
+        serviceName: timemachine
         template:
           spec:
             containers:
