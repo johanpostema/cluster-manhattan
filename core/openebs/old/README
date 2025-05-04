@@ -1,0 +1,40 @@
+requirements:
+- installeer (of upgrade) talos met zfs support
+- start een privilegd container en maak een zfs pool met de juiste naam aan
+
+
+voorbeeld voor de container:
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zfs-shell
+  labels:
+    pod-security.kubernetes.io/audit: privileged
+    pod-security.kubernetes.io/enforce: privileged
+    pod-security.kubernetes.io/warn: privileged
+spec: {}
+status: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: zfs-shell
+  namespace: zfs-shell
+spec:
+  nodeName: talos-8zu-0sh
+  hostIPC: true
+  hostNetwork: true
+  hostPID: true
+  containers:
+    - command: ["sleep", "infinity"]
+      image: debian
+      name: shell
+      securityContext:
+        privileged: true
+
+
+vanuit de container:
+nsenter --mount=/proc/1/ns/mnt -- zpool create -m legacy -f zfspv-pool /dev/nvme0n1
+nsenter --mount=/proc/1/ns/mnt -- zpool status
