@@ -77,3 +77,16 @@ patches:
       spec:
         loadBalancerIP: 192.168.69.102
         type: LoadBalancer
+
+  - target:
+      kind: Service
+      name: timemachine-udp
+    patch: |-
+      apiVersion: v1
+      kind: Service
+      metadata:
+        name: timemachine-udp
+        namespace: timemachine
+      spec:
+        loadBalancerIP: 192.168.69.102
+        type: LoadBalancer
