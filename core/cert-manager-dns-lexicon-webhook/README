@@ -1,5 +1,9 @@
-letop: er zijn 2 app deployments, de argocd app en de daadwerkelijke helm deployment
+Voor de dns-lexicon webhook zijn de volgende secrets nodig:
 
-verder moet er voor de cert-manager zelf bij de issuer  de webhook opgegeven worden.
+directadmin-api-creds met key username
+directadmin-api-creds met key password
 
-Zie de cert-manager-issuer.yaml onder de cert-manager directory voor meer details.
+
+kubectl -n cert-manager create secret generic directadmin-api-creds \
+  --from-literal=username="${USERNAME}" \
+  --from-literal=password="${PASSWORD}"
