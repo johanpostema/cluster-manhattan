@@ -5,3 +5,4 @@ namespace: testapp
 
 resources:
   - testapp-ns.yaml
+  - samba-deploy.yaml
