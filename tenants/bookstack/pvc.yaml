@@ -12,6 +12,7 @@ spec:
   resources:
     requests:
       storage: 5Gi
+  storageClassName: zfs-localpv-default
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -26,3 +27,4 @@ spec:
   resources:
     requests:
       storage: 10Gi
+  storageClassName: zfs-localpv-default
