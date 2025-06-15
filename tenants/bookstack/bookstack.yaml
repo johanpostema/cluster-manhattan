@@ -31,12 +31,12 @@ spec:
               value: bookstackapp
             - name: DB_HOST
               value: bookstack-db-svc
-            - name: DB_PASS
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: mysql
                   key: password
-            - name: DB_USER
+            - name: DB_USERNAME
               value: bookstack
             - name: PGID
               value: "1000"
