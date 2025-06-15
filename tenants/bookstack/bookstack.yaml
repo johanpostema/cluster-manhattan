@@ -22,11 +22,13 @@ spec:
         - env:
             - name: APP_URL
               value: https://bookstack.manhatten.uxn.nl
-            - name: APP_KEY
+            - name: APP_KEY_RAW
               valueFrom:
                 secretKeyRef:
                   name: app-key
                   key: APP_KEY
+            - name: APP_KEY
+              value: base64:$(APP_KEY_RAW)
             - name: DB_DATABASE
               value: bookstackapp
             - name: DB_HOST
