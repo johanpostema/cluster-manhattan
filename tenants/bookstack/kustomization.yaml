@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: bookstack
+
+resources:
+  - mysql_root_secret.yaml
+  - mysql_secret.yaml
+  - bookstack-ns.yaml
+  - bookstack.yaml
+  - ingress.yaml
+  - mariadb.yaml
+  - pvc.yaml
+  - svc.yaml
