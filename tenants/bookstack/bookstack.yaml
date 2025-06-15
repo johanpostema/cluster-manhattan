@@ -27,7 +27,6 @@ spec:
                 secretKeyRef:
                   name: app-key
                   key: APP_KEY
-              value: https://bookstack.manhatten.uxn.nl
             - name: DB_DATABASE
               value: bookstackapp
             - name: DB_HOST
