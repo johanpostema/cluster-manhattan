@@ -1,3 +1,6 @@
 # base cluster config
 
 k apply -k https://github.com/johanpostema/cluster-manhatten/bootstrap/overlays/default
+
+# letop: een helm releasename moet anders zijn dan het projectnaam in argo ander is er een nameconflict.
+# dus bijv. kubernetes-secret-generator binnen core/ mag de helm release/deployment niet dezelfde naam krijgen
