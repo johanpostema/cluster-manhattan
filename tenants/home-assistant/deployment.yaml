@@ -20,9 +20,18 @@ spec:
             - name: TZ
               value: "Europe/Amsterdam"
           volumeMounts:
+            - name: config-volume
+              mountPath: /config
+              readOnly: true
             - name: home-assistant-config
               mountPath: /config
       volumes:
+        - name: config-volume
+          configMap:
+            name: home-assistant-config
+            items:
+              - key: configuration.yaml
+                path: configuration.yaml
         - name: home-assistant-config
           persistentVolumeClaim:
             claimName: home-assistant-config
