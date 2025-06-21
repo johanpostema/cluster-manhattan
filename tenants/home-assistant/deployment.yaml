@@ -21,7 +21,7 @@ spec:
               value: "Europe/Amsterdam"
           volumeMounts:
             - name: config-volume
-              mountPath: /config
+              mountPath: /config/config.yaml
               readOnly: true
             - name: home-assistant-config
               mountPath: /config
