@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  labels:
+    app: htpc
+  name: htpc
+  namespace: htpc
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: emby
+              servicePort: webui
+            path: /
+          - backend:
+              serviceName: jackett
+              servicePort: webui
+            path: /jackett
+          - backend:
+              serviceName: sonarr
+              servicePort: webui
+            path: /sonarr
+          - backend:
+              serviceName: radarr
+              servicePort: webui
+            path: /radarr
+          - backend:
+              serviceName: bazarr
+              servicePort: webui
+            path: /bazarr
+          - backend:
+              serviceName: transmission
+              servicePort: webui
+            path: /transmission
