@@ -1,0 +1,7 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: htpc
+
+resources:
+  - https://raw.githubusercontent.com/fabito/htk8s/v0.1/install_x86_64.yaml
