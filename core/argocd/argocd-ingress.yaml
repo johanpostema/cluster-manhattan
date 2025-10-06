@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: argocd.manhatten.uxn.nl
+    - host: argocd.manhattan.uxn.nl
       http:
         paths:
           - path: /
@@ -24,5 +24,5 @@ spec:
                   number: 443
   tls:
     - hosts:
-        - argocd.manhatten.uxn.nl
+        - argocd.manhattan.uxn.nl
       secretName: argocd-tls-secret

@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: bookstack.manhatten.uxn.nl
+    - host: bookstack.manhattan.uxn.nl
       http:
         paths:
           - path: /
@@ -22,5 +22,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - bookstack.manhatten.uxn.nl
+        - bookstack.manhattan.uxn.nl
       secretName: bookstack-tls-secret

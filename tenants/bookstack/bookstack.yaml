@@ -21,7 +21,7 @@ spec:
       containers:
         - env:
             - name: APP_URL
-              value: https://bookstack.manhatten.uxn.nl
+              value: https://bookstack.manhattan.uxn.nl
             - name: APP_KEY_RAW
               valueFrom:
                 secretKeyRef:
