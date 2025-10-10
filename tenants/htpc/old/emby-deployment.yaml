@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emby
+  namespace: htpc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: emby
+  template:
+    metadata:
+      labels:
+        app: emby
+    spec:
+      containers:
+        - name: emby
+          image: emby/embyserver:latest
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: data
+              mountPath: /data/videos
+          ports:
+            - containerPort: 8096
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: emby-config
+        - name: data
+          persistentVolumeClaim:
+            claimName: qbitt-download

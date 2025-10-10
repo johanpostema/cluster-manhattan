@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent
+  namespace: htpc
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    ingress.kubernetes.io/force-ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-production
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: qbittorrent.manhattan.uxn.nl
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: qbittorrent-svc
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+        - qbittorrent.manhattan.uxn.nl
+      secretName: qbittorrent-tls-secret

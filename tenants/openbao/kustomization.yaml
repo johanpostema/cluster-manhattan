@@ -1,0 +1,3 @@
+resources:
+  - openbao-helm-deployment.yaml
+  - openbao-ingress.yaml
