@@ -4,3 +4,6 @@
 
 RELEASE=$(curl -s https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
 curl -L -o kubevirt.yaml "https://github.com/kubevirt/kubevirt/releases/download/${RELEASE}/kubevirt-operator.yaml"
+
+
+# CDI is van belang, zie ook core/cdi
