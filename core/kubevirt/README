@@ -1,0 +1,6 @@
+# https://docs.siderolabs.com/talos/v1.9/advanced-guides/install-kubevirt
+
+
+
+RELEASE=$(curl -s https://storage.googleapis.com/kubevirt-prow/release/kubevirt/kubevirt/stable.txt)
+curl -L -o kubevirt.yaml "https://github.com/kubevirt/kubevirt/releases/download/${RELEASE}/kubevirt-operator.yaml"
